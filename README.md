@@ -2,6 +2,8 @@
 
 ### To do
 
+Download the project from https://github.com/laishidua/weather
+
 Import the project as a maven project. 
 
 Run the project as a Spring Boot App or run maven install to create the .jar file.
