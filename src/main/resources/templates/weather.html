@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-dark text-white">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<div>
+					<ul th:each="error : ${errors}">
+						<li th:text="${error}" class="ui error message" />
+					</ul>
+				</div>
+
+				<form th:action="@{/weather}" th:object="${weather}" method="post">
+					<div class="form-group row">
+						<label for="place" class="col-sm-2 col-form-label">Name of
+							the place</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{name}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" value="Search" class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+
+				<div th:if="${weather?.name}">
+					<table class="table table-striped table-bordered">
+						<thead class="thead-inverse">
+							<tr>
+								<th>Type</th>
+								<th>Data</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Date</td>
+								<td th:text="${time}"></td>
+							</tr>						
+							<tr>
+								<td>Name</td>
+								<td th:text="${weather.name}"></td>
+							</tr>
+							<tr th:each="listDesc,iterator : ${weather.weather}">
+								<td th:text="${'Description ' + iterator.count}">Description</td>
+								<td th:text="${listDesc.description}"></td>
+							</tr>	
+							<tr>
+								<td>Temp Farenheit</td>
+								<td th:text="${tempf}"></td>
+							</tr>
+							<tr>
+								<td>Temp Celsius</td>
+								<td th:text="${tempc}"></td>
+							</tr>	
+							<tr>
+								<td>Sunrise</td>
+								<td th:text="${sunrise}"></td>
+							</tr>
+							<tr>
+								<td>Sunset</td>
+								<td th:text="${sunset}"></td>
+							</tr>																										
+						</tbody>
+
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+	</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
