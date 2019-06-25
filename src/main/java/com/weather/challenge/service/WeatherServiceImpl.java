@@ -1,6 +1,7 @@
 package com.weather.challenge.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import com.weather.challenge.json.WeatherJson;
 
@@ -16,7 +17,7 @@ public class WeatherServiceImpl implements IWeatherService {
 	private Environment env;
 
 	@Override
-	public WeatherJson getWeatherFromEndPoint(String place) {
+	public WeatherJson getWeatherFromEndPoint(String place) throws RestClientException {
 	    final String uri = 
 	    		env.getProperty("openweather.api.url")
 	    		.concat("?q=")
