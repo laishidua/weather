@@ -22,9 +22,13 @@
 						<label for="place" class="col-sm-2 col-form-label">Name of
 							the place</label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{name}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
+							<select th:field="*{name}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+								<option value="">Select a city</option>
+								<option value="Hong Kong">Hong Kong</option>
+								<option value="London">London</option>
+								<option value="Mexico City">Mexico City</option>
+							</select> <small class="form-text text-danger"
 								th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
 						</div>
 					</div>
@@ -48,7 +52,7 @@
 							<tr>
 								<td>Date</td>
 								<td th:text="${time}"></td>
-							</tr>						
+							</tr>
 							<tr>
 								<td>Name</td>
 								<td th:text="${weather.name}"></td>
@@ -56,7 +60,7 @@
 							<tr th:each="listDesc,iterator : ${weather.weather}">
 								<td th:text="${'Description ' + iterator.count}">Description</td>
 								<td th:text="${listDesc.description}"></td>
-							</tr>	
+							</tr>
 							<tr>
 								<td>Temp Farenheit</td>
 								<td th:text="${tempf}"></td>
@@ -64,7 +68,7 @@
 							<tr>
 								<td>Temp Celsius</td>
 								<td th:text="${tempc}"></td>
-							</tr>	
+							</tr>
 							<tr>
 								<td>Sunrise</td>
 								<td th:text="${sunrise}"></td>
@@ -72,7 +76,7 @@
 							<tr>
 								<td>Sunset</td>
 								<td th:text="${sunset}"></td>
-							</tr>																										
+							</tr>
 						</tbody>
 
 					</table>
