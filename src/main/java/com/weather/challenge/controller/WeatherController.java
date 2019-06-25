@@ -2,17 +2,15 @@ package com.weather.challenge.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.weather.challenge.json.WeatherJson;
-import com.weather.challenge.service.IWeatherService;;
+import com.weather.challenge.service.IWeatherService;
 
 @Controller
 public class WeatherController {
@@ -20,16 +18,16 @@ public class WeatherController {
 	@Autowired
 	private IWeatherService weatherService;
 	
-	@RequestMapping(value= {"/"}, method=RequestMethod.GET)
-	public String inicio(Model model) {
+	@GetMapping(value= {"/"})
+	public String index(Model model) {
 		WeatherJson weather= new WeatherJson();
 		model.addAttribute("weather", weather);
 		
 		return "weather";
 	}
 
-	@RequestMapping(value= {"/weather"})
-	public String consultar(@RequestParam(name="name", defaultValue="") String name, Model model, RedirectAttributes flash) {
+	@PostMapping(value= {"/weather"})
+	public String consult(@RequestParam(name="name", defaultValue="") String name, Model model, RedirectAttributes flash) {
 		if (name.isEmpty()) {	
 			flash.addFlashAttribute("errors", "Name of place must not be empty");
 			return "redirect:/";
