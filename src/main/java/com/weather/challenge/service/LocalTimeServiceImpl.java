@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import org.springframework.stereotype.Service;
+
 /**
  * 
  * @author laish
@@ -11,6 +13,7 @@ import java.util.TimeZone;
  * The unique responsibility of this class is to get the formated local time
  * of a place.
  */
+@Service
 public class LocalTimeServiceImpl implements ILocalTimeService {
 
 	@Override
