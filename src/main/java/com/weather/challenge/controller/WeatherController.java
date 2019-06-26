@@ -1,5 +1,7 @@
 package com.weather.challenge.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,12 @@ import com.weather.challenge.service.IWeatherService;
 @Controller
 public class WeatherController {
 	
+	private final Logger log = LoggerFactory.getLogger(getClass());
+	
+	private static final String FLASH_ERRORS = "errors";
+	private static final String WEATHER_HTML = "weather";
+	private static final String INDEX_REDIRECT = "redirect:/";
+	
 	@Autowired
 	private IWeatherService weatherService;
 	
@@ -31,14 +39,14 @@ public class WeatherController {
 		WeatherJson weather= new WeatherJson();
 		model.addAttribute("weather", weather);
 		
-		return "weather";
+		return WEATHER_HTML;
 	}
 
 	@PostMapping(value= {"/weather"})
 	public String consult(@RequestParam(name="name", defaultValue="") String name, Model model, RedirectAttributes flash) {
 		if (name.isEmpty()) {	
-			flash.addFlashAttribute("errors", messageSource.getMessage("text.message.empty.name", null, null));
-			return "redirect:/";
+			flash.addFlashAttribute(FLASH_ERRORS, messageSource.getMessage("text.message.empty.name", null, null));
+			return INDEX_REDIRECT;
 		} 
 		String concatPlace = name.replace(" ", "+");		
 		try {
@@ -55,17 +63,17 @@ public class WeatherController {
 		} catch (RestClientException ex) {
 			if(ex instanceof HttpClientErrorException) {
 				HttpClientErrorException clientEx = ((HttpClientErrorException)ex);
-				flash.addFlashAttribute("errors", 
+				flash.addFlashAttribute(FLASH_ERRORS, 
 					messageSource.getMessage("text.error.code", null, null)
 					.concat(" ").concat(clientEx.getStatusCode().toString()));
 			} else {
-				flash.addFlashAttribute("errors", 
+				flash.addFlashAttribute(FLASH_ERRORS, 
 						messageSource.getMessage("text.error.data", null, null));				
 			}
-			ex.printStackTrace();
-			return "redirect:/";
+			log.error(ex.getMessage());
+			return INDEX_REDIRECT;
 		}		
-		return "weather";
+		return WEATHER_HTML;
 	}
 	
 }

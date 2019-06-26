@@ -14,7 +14,7 @@ public class Clouds  implements Serializable{
 
 
     private Integer all;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public Integer getAll() {
         return all;

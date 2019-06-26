@@ -20,7 +20,7 @@ public class Main  implements Serializable{
     private Double seaLevel;
     private Double grndLevel;
     private Integer humidity;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public Double getTemp() {
         return temp;

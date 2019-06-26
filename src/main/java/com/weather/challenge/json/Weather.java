@@ -17,7 +17,7 @@ public class Weather  implements Serializable{
     private String main;
     private String icon;
     private String description;
-    private Map<String, Object> extra = new HashMap<String, Object>();
+    private Map<String, Object> extra = new HashMap<>();
 
     public Integer getId() {
         return id;

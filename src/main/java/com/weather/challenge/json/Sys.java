@@ -17,7 +17,7 @@ public class Sys  implements Serializable{
     private String country;
     private Long sunrise;
     private Long sunset;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public Double getMessage() {
         return message;

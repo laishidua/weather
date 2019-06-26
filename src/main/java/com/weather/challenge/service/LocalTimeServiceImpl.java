@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,8 +18,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class LocalTimeServiceImpl implements ILocalTimeService {
 
+	private final Logger log = LoggerFactory.getLogger(getClass());
+	
 	@Override
 	public String getFormatedLocalTime(String placeName, Date date) {
+		log.info(placeName);
 		SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
 		String utc = "";
 		switch (placeName) {

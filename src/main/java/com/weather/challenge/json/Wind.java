@@ -15,7 +15,7 @@ public class Wind  implements Serializable{
 
     private Double speed;
     private Double deg;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     public Double getSpeed() {
         return speed;

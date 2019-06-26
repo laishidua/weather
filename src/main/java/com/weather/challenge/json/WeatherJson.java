@@ -115,8 +115,8 @@ public class WeatherJson  implements Serializable{
     private Integer dt;
     private Integer cod;
     
-    private List<Weather> weather = new ArrayList<Weather>();
-    private Map<String, Object> extra = new HashMap<String, Object>();
+    private List<Weather> weather = new ArrayList<>();
+    private Map<String, Object> extra = new HashMap<>();
 
 
 

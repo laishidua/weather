@@ -40,4 +40,17 @@ com.weather.challenge.json
 
 All the POJO classes needed to parse the json Object.
 
+### Corrections
+
+1. Add Combo box: done in resources/templates/weather.html
+2. Prefer GetMapping annotation: done in WeatherController.java methods
+3. Keep all code in english: done
+4. Follow Single Responsibility Pattern and change to switch: done in interface ILocalTimeService.java and its implementation.
+5. OpenWeatherApi properties extracted from properties file: done in config.properties file
+6. Handling errors like what happen if server return 500 error: done in IweatherService throws RestClientException, exceptions are handled in WeatherController class.
+7. TDD approach: done with Junit tests.
+8. Implement error handling: done.
+9. Test code with sonar: done installing Eclipse/STS extension
+
+Extra: Client messages are taken from messages.properties
 
