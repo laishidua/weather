@@ -1,16 +1,28 @@
 # Getting Started
 
-### To do
+### Run with IDE
 
 Download the project from https://github.com/laishidua/weather
 
-Import the project as a maven project. 
+Import the project as a maven project in Eclipse or STS. 
 
 Run the project as a Spring Boot App or run maven install to create the .jar file.
 
 To run the jar file just execute in console:
 
 >java -jar NAME-OF-GENERATED-JAR.jar
+
+### Run in console:
+
+>maven install
+
+after maven install go to the target folder where the .jar file is generated 
+
+>java -jar NAME-OF-GENERATED-JAR.jar
+
+or simply run in console: mvn spring-boot:run
+
+### View in Browser
 
 open a web browser in http://localhost:8080/
 
@@ -52,5 +64,5 @@ All the POJO classes needed to parse the json Object.
 8. Implement error handling: done.
 9. Test code with sonar: done installing Eclipse/STS extension
 
-Extra: Client messages are taken from messages.properties
+Extra: Client messages are taken from messages.properties, using Mockito in class WeatherControllerTest for TDD test cases
 
