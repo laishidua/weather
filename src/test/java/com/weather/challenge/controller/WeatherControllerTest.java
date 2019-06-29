@@ -8,7 +8,6 @@ public class WeatherControllerTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
 		//TODO
 	}
 

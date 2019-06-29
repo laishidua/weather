@@ -14,7 +14,7 @@ To run the jar file just execute in console:
 
 ### Run in console:
 
->maven install
+>mvn install
 
 after maven install go to the target folder where the .jar file is generated 
 
