@@ -1,24 +1,12 @@
 # Getting Started
 
-### Run with IDE
-
-Download the project from https://github.com/laishidua/weather
-
-Import the project as a maven project in Eclipse or STS. 
-
-Run the project as a Spring Boot App or run maven install to create the .jar file.
-
-To run the jar file just execute in console:
-
->java -jar NAME-OF-GENERATED-JAR.jar
-
 ### Run in console:
 
 >mvn install
 
 after maven install go to the target folder where the .jar file is generated 
 
->java -jar NAME-OF-GENERATED-JAR.jar
+>java -jar weather-0.0.1-SNAPSHOT.jar
 
 or simply run in console: mvn spring-boot:run
 
